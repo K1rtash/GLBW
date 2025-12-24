@@ -49,8 +49,14 @@ if(NOT glfw3_FOUND)
 endif()
 
 target_link_libraries(${PROJECT_NAME} PRIVATE glfw)
-set_property(TARGET ${PROJECT_NAME} PROPERTY LINK_INTERFACE_LIBRARIES "")
 
+set_target_properties(${PROJECT_NAME} PROPERTIES
+    INTERFACE_LINK_LIBRARIES "" 
+    INTERFACE_LINK_LIBRARIES_DEBUG "" 
+    INTERFACE_LINK_LIBRARIES_RELEASE ""
+)
+
+set_property(TARGET ${PROJECT_NAME} PROPERTY EXPORT_LINK_INTERFACE_LIBRARIES OFF)
 
 # ----------------------------- 
 # OpenGL
