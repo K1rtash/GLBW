@@ -49,6 +49,8 @@ if(NOT glfw3_FOUND)
 endif()
 
 target_link_libraries(${PROJECT_NAME} PRIVATE glfw)
+set_property(TARGET ${PROJECT_NAME} PROPERTY LINK_INTERFACE_LIBRARIES "")
+
 
 # ----------------------------- 
 # OpenGL
@@ -75,23 +77,38 @@ if(${GLBW_BUILD_DEMO})
     target_include_directories(${PROJECT_NAME}demo PRIVATE ${PROJECT_SOURCE_DIR}/include)
 endif()
 
-# ----------------------------- 
+# -----------------------------
 # Install
 # -----------------------------
 include(CMakePackageConfigHelpers)
 
-install(TARGETS ${PROJECT_NAME} 
+install(TARGETS ${PROJECT_NAME}
     EXPORT ${PROJECT_NAME}Targets
-    ARCHIVE DESTINATION lib 
-    LIBRARY DESTINATION lib 
-    RUNTIME DESTINATION bin 
-) 
+    ARCHIVE DESTINATION lib
+    LIBRARY DESTINATION lib
+    RUNTIME DESTINATION bin
+)
 
 install(DIRECTORY include/ DESTINATION include)
 install(DIRECTORY docs/ DESTINATION docs)
 
+# Export targets
 install(EXPORT ${PROJECT_NAME}Targets
-    FILE ${PROJECT_NAME}Config.cmake
+    FILE ${PROJECT_NAME}Targets.cmake
     NAMESPACE ${PROJECT_NAME}::
+    DESTINATION lib/cmake/${PROJECT_NAME}
+)
+
+# Generate version file
+write_basic_package_version_file(
+    "${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}ConfigVersion.cmake"
+    VERSION ${PROJECT_VERSION}
+    COMPATIBILITY SameMajorVersion
+)
+
+# Install config + version
+install(FILES
+    "${CMAKE_CURRENT_SOURCE_DIR}/cmake/${PROJECT_NAME}Config.cmake"
+    "${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}ConfigVersion.cmake"
     DESTINATION lib/cmake/${PROJECT_NAME}
 )
