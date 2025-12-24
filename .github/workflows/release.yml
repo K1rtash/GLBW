@@ -47,24 +47,8 @@ jobs:
       - name: Build
         run: cmake --build --preset ci
 
-      - name: Package artifacts (unix)
-        if: matrix.os != 'windows-latest'
-        run: |
-          mkdir package
-          cp -r include package/
-          cp build/ci/*.a package/ 2>/dev/null || true
-          cp build/ci/*.lib package/ 2>/dev/null || true
-
-      - name: Package artifacts (windows)
-        if: matrix.os == 'windows-latest'
-        run: |
-          New-Item -ItemType Directory -Force -Path package | Out-Null
-          Copy-Item -Recurse include package
-          if (Test-Path "build/ci") {
-          Get-ChildItem "build/ci" -Filter *.a -ErrorAction SilentlyContinue | Copy-Item -Destination package -ErrorAction SilentlyContinue
-          Get-ChildItem "build/ci" -Filter *.lib -ErrorAction SilentlyContinue | Copy-Item -Destination package -ErrorAction SilentlyContinue
-          }
-
+      - name: Install artifacts
+        run: cmake --install build/ci --prefix package
 
       - name: Upload artifacts
         uses: actions/upload-artifact@v4
@@ -91,10 +75,7 @@ jobs:
         run: cmake --build --preset macos-universal
 
       - name: Package artifacts
-        run: |
-          mkdir package
-          cp -r include package/
-          cp build/macos-universal/*.a package/
+        run: cmake --install build/macos-universal --prefix package
 
       - name: Upload artifacts
         uses: actions/upload-artifact@v4
@@ -112,10 +93,6 @@ jobs:
       - name: Upload to GitHub Release 
         uses: softprops/action-gh-release@v2 
         with: 
-          files: artifacts/**/* 
-          fail_on_unmatched_files: true
-          tag_name: ${{ github.event.release.tag_name }}
-          name: ${{ github.event.release.name }}
-          overwrite: true
+          files: artifacts/**/package/**
         env: 
           GITHUB_TOKEN: ${{ secrets.RELEASE_TOKEN }}
