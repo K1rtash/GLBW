@@ -69,10 +69,10 @@ endif()
 if(${GLBW_BUILD_DEMO})
     file(GLOB DEMO_SRC_FILES "demo/*.c")
 
-    add_executable(glbw_demo ${DEMO_SRC_FILES})
+    add_executable(${PROJECT_NAME}demo ${DEMO_SRC_FILES})
 
-    target_link_libraries(glbw_demo PRIVATE ${PROJECT_NAME})
-    target_include_directories(glbw_demo PRIVATE ${PROJECT_SOURCE_DIR}/include)
+    target_link_libraries(${PROJECT_NAME}demo PRIVATE ${PROJECT_NAME})
+    target_include_directories(${PROJECT_NAME}demo PRIVATE ${PROJECT_SOURCE_DIR}/include)
 endif()
 
 # ----------------------------- 
@@ -88,6 +88,7 @@ install(TARGETS ${PROJECT_NAME}
 ) 
 
 install(DIRECTORY include/ DESTINATION include)
+install(DIRECTORY docs/ DESTINATION docs)
 
 install(EXPORT ${PROJECT_NAME}Targets
     FILE ${PROJECT_NAME}Config.cmake
