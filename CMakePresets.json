@@ -1,0 +1,95 @@
+{
+  "version": 5,
+  "cmakeMinimumRequired": {
+    "major": 3,
+    "minor": 15
+  },
+
+  "configurePresets": [
+    {
+      "name": "default",
+      "displayName": "Default (Debug)",
+      "generator": "Ninja",
+      "binaryDir": "${sourceDir}/build",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Debug",
+        "GLBW_BUILD_DEMO": "ON"
+      }
+    },
+
+    {
+      "name": "debug",
+      "displayName": "Debug",
+      "generator": "Ninja",
+      "binaryDir": "${sourceDir}/build/debug",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Debug",
+        "GLBW_BUILD_DEMO": "ON"
+      }
+    },
+
+    {
+      "name": "release",
+      "displayName": "Release",
+      "generator": "Ninja",
+      "binaryDir": "${sourceDir}/build/release",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Release",
+        "GLBW_BUILD_DEMO": "ON"
+      }
+    },
+
+    {
+      "name": "ci",
+      "displayName": "CI Build",
+      "generator": "Ninja",
+      "binaryDir": "${sourceDir}/build/ci",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Release",
+        "GLBW_BUILD_DEMO": "OFF"
+      }
+    },
+
+    {
+        "name": "macos-universal",
+        "displayName": "macOS Universal (x86_64 + arm64)",
+        "generator": "Ninja",
+        "binaryDir": "${sourceDir}/build/macos-universal",
+        "cacheVariables": {
+            "CMAKE_BUILD_TYPE": "Release",
+            "CMAKE_OSX_ARCHITECTURES": "x86_64;arm64",
+            "GLBW_BUILD_DEMO": "OFF"
+        }
+    }
+  ],
+
+  "buildPresets": [
+    {
+      "name": "default",
+      "configurePreset": "default"
+    },
+    {
+      "name": "debug",
+      "configurePreset": "debug"
+    },
+    {
+      "name": "release",
+      "configurePreset": "release"
+    },
+    {
+      "name": "ci",
+      "configurePreset": "ci"
+    },
+        {
+      "name": "macos-universal",
+      "configurePreset": "macos-universal"
+    }
+  ],
+
+  "testPresets": [
+    {
+      "name": "default",
+      "configurePreset": "default"
+    }
+  ]
+}
