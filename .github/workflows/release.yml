@@ -113,5 +113,9 @@ jobs:
         uses: softprops/action-gh-release@v2 
         with: 
           files: artifacts/**/* 
+          fail_on_unmatched_files: true
+          tag_name: ${{ github.event.release.tag_name }}
+          name: ${{ github.event.release.name }}
+          overwrite: true
         env: 
           GITHUB_TOKEN: ${{ secrets.RELEASE_TOKEN }}
