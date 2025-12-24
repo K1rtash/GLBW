@@ -96,9 +96,18 @@ jobs:
         run: |
           VERSION="${{ github.event.release.tag_name }}"
           cd artifacts
-          if [ -d "lib-windows-latest" ]; then zip -r "GLBW-${VERSION}_WIN64.zip" "lib-windows-latest" fi
-          if [ -d "lib-ubuntu-latest" ]; then zip -r "GLBW-${VERSION}_LINUX_x64.zip" "lib-ubuntu-latest" fi
-          if [ -d "lib-macos-universal" ]; then zip -r "GLBW-${VERSION}_MACOS.zip" "lib-macos-universal" fi
+          
+          if [ -d "lib-windows-latest" ]; then 
+            zip -r "GLBW-${VERSION}_WIN64.zip" "lib-windows-latest" 
+          fi
+
+          if [ -d "lib-ubuntu-latest" ]; 
+            then zip -r "GLBW-${VERSION}_LINUX_x64.zip" "lib-ubuntu-latest" 
+          fi
+
+          if [ -d "lib-macos-universal" ]; then 
+            zip -r "GLBW-${VERSION}_MACOS.zip" "lib-macos-universal" 
+          fi
       - name: Upload to GitHub Release 
         uses: softprops/action-gh-release@v2 
         with: 
