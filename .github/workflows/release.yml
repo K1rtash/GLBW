@@ -65,8 +65,10 @@ jobs:
       - name: Clean build directory
         run: rm -rf build/macos-universal
 
-      - name: Install CMake
-        uses: jwlawson/actions-setup-cmake@v1
+      #- name: Install CMake
+      #  uses: jwlawson/actions-setup-cmake@v1
+      - name: Get CMake version
+        run: cmake --version
 
       - name: Configure (Universal)
         run: cmake --preset macos-universal
