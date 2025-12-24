@@ -5,18 +5,113 @@ on:
     types: [published]
 
 jobs:
-  upload:
-    runs-on: ubuntu-latest
+  build:
+    name: Build on ${{ matrix.os }}
+    runs-on: ${{ matrix.os }}
+
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
 
     steps:
-      - name: Download build artifacts
-        uses: actions/download-artifact@v4
-        with:
-          path: artifacts
+      
+      - name: Checkout
+        uses: actions/checkout@v4
+      
+      - name: Clean build directory (unix)
+        if: matrix.os != 'windows-latest'
+        run: rm -rf build/ci
 
-      - name: Upload to GitHub Release
-        uses: softprops/action-gh-release@v2
+      - name: Clean build directory (windows)
+        if: matrix.os == 'windows-latest'
+        run: if (Test-Path "build/ci") { Remove-Item -Recurse -Force "build/ci" }
+
+      - name: Install wayland dep in ubuntu
+        if: matrix.os == 'ubuntu-latest'
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y \
+          libwayland-dev \
+          wayland-protocols \
+          libxkbcommon-dev \
+          libegl1-mesa-dev \
+          libgles2-mesa-dev
+
+      - name: Install CMake
+        uses: jwlawson/actions-setup-cmake@v1
+
+      - name: Configure
+        run: cmake --preset ci
+
+      - name: Build
+        run: cmake --build --preset ci
+
+      - name: Package artifacts (unix)
+        if: matrix.os != 'windows-latest'
+        run: |
+          mkdir package
+          cp -r include package/
+          cp build/ci/*.a package/ 2>/dev/null || true
+          cp build/ci/*.lib package/ 2>/dev/null || true
+
+      - name: Package artifacts (windows)
+        if: matrix.os == 'windows-latest'
+        run: |
+          New-Item -ItemType Directory -Force -Path package | Out-Null
+          Copy-Item -Recurse include package
+          if (Test-Path "build/ci") {
+          Get-ChildItem "build/ci" -Filter *.a -ErrorAction SilentlyContinue | Copy-Item -Destination package -ErrorAction SilentlyContinue
+          Get-ChildItem "build/ci" -Filter *.lib -ErrorAction SilentlyContinue | Copy-Item -Destination package -ErrorAction SilentlyContinue
+          }
+
+
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v4
         with:
-          files: artifacts/**/*
-        env:
+          name: lib-${{ matrix.os }}
+          path: package
+  
+  build-macos-universal:
+    runs-on: macos-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Clean build directory
+        run: rm -rf build/macos-universal
+
+      - name: Install CMake
+        uses: jwlawson/actions-setup-cmake@v1
+
+      - name: Configure (Universal)
+        run: cmake --preset macos-universal
+
+      - name: Build (Universal)
+        run: cmake --build --preset macos-universal
+
+      - name: Package artifacts
+        run: |
+          mkdir package
+          cp -r include package/
+          cp build/macos-universal/*.a package/
+
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: lib-macos-universal
+          path: package
+  upload:
+    needs: [build, build-macos-universal] 
+    runs-on: ubuntu-latest 
+    steps: 
+      - name: Download all artifacts 
+        uses: actions/download-artifact@v4 
+        with: 
+          path: artifacts 
+      - name: Upload to GitHub Release 
+        uses: softprops/action-gh-release@v2 
+        with: 
+          files: artifacts/**/* 
+        env: 
           GITHUB_TOKEN: ${{ secrets.RELEASE_TOKEN }}
