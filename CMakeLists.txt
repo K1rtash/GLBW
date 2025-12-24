@@ -1,6 +1,9 @@
 cmake_minimum_required(VERSION 3.15)
-project(GLBW VERSION 0.1.0)
+project(GLBW LANGUAGES C VERSION 0.1.0)
 
+# ----------------------------- 
+# Options
+# -----------------------------
 option(GLBW_BUILD_DEMO "Build demo binaries" ON)
 
 # ----------------------------- 
@@ -76,8 +79,8 @@ endif()
 # -----------------------------
 include(CMakePackageConfigHelpers)
 
-install(TARGETS GLBW 
-    EXPORT GLBWTargets
+install(TARGETS ${PROJECT_NAME} 
+    EXPORT ${PROJECT_NAME}Targets
     ARCHIVE DESTINATION lib 
     LIBRARY DESTINATION lib 
     RUNTIME DESTINATION bin 
@@ -85,20 +88,8 @@ install(TARGETS GLBW
 
 install(DIRECTORY include/ DESTINATION include)
 
-install(EXPORT GLBWTargets 
-    FILE GLBWTargets.cmake 
-    NAMESPACE GLBW:: 
-    DESTINATION lib/cmake/GLBW 
-)
-
-write_basic_package_version_file( 
-    "${CMAKE_CURRENT_BINARY_DIR}/GLBWConfigVersion.cmake" 
-    VERSION ${PROJECT_VERSION} 
-    COMPATIBILITY SameMajorVersion 
-) 
-
-install(FILES 
-    "${CMAKE_CURRENT_SOURCE_DIR}/cmake/GLBWConfig.cmake" 
-    "${CMAKE_CURRENT_BINARY_DIR}/GLBWConfigVersion.cmake" 
-    DESTINATION lib/cmake/GLBW 
+install(EXPORT ${PROJECT_NAME}Targets
+    FILE ${PROJECT_NAME}Config.cmake
+    NAMESPACE ${PROJECT_NAME}::
+    DESTINATION lib/cmake/${PROJECT_NAME}
 )
