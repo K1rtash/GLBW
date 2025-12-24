@@ -38,6 +38,7 @@ if(NOT glfw3_FOUND)
 
     set(GLFW_BUILD_WAYLAND ON CACHE BOOL "" FORCE) 
     set(GLFW_BUILD_X11 OFF CACHE BOOL "" FORCE) 
+    set(GLFW_INSTALL OFF CACHE BOOL "" FORCE)
 
     FetchContent_Declare(
         glfw 
