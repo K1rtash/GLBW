@@ -50,14 +50,6 @@ endif()
 
 target_link_libraries(${PROJECT_NAME} PRIVATE glfw)
 
-set_target_properties(${PROJECT_NAME} PROPERTIES
-    INTERFACE_LINK_LIBRARIES "" 
-    INTERFACE_LINK_LIBRARIES_DEBUG "" 
-    INTERFACE_LINK_LIBRARIES_RELEASE ""
-)
-
-set_property(TARGET ${PROJECT_NAME} PROPERTY EXPORT_LINK_INTERFACE_LIBRARIES OFF)
-
 # ----------------------------- 
 # OpenGL
 # -----------------------------
@@ -82,6 +74,18 @@ if(${GLBW_BUILD_DEMO})
     target_link_libraries(${PROJECT_NAME}demo PRIVATE ${PROJECT_NAME})
     target_include_directories(${PROJECT_NAME}demo PRIVATE ${PROJECT_SOURCE_DIR}/include)
 endif()
+
+
+# ----------------------------- 
+# Interface
+# -----------------------------
+set_target_properties(${PROJECT_NAME} PROPERTIES
+    INTERFACE_LINK_LIBRARIES ""
+    INTERFACE_LINK_LIBRARIES_DEBUG ""
+    INTERFACE_LINK_LIBRARIES_RELEASE ""
+)
+
+set_property(TARGET ${PROJECT_NAME} PROPERTY EXPORT_LINK_INTERFACE_LIBRARIES OFF)
 
 # -----------------------------
 # Install
