@@ -24,17 +24,17 @@
  * 
  * @returns GLBW_TRUE on success
  */
-int GLBW_Init();
+GLBW_API int GLBW_Init();
 
 /**
  * @brief Frees all resources created by the library, like the window and textures
  * 
  * Should be called before the program ends to free resources allocated by this library
  */
-void GLBW_Exit();
+GLBW_API void GLBW_Exit();
 
 /**
  * @brief Prints the latest error to the console
  */
-void GLBW_GetError();
+GLBW_API void GLBW_GetError();
 #endif

@@ -27,7 +27,7 @@
  * 
  * @see GLBW_CreateWindowWithArgs
  */
-int GLBW_CreateWindow(const char* title, int width, int height);
+GLBW_API int GLBW_CreateWindow(const char* title, int width, int height);
 
 /**
  * @brief Creates a window with precise arguments
@@ -40,13 +40,13 @@ int GLBW_CreateWindow(const char* title, int width, int height);
  * @param resizable GLBW_TRUE or GLBW_FALSE
  * @param msaa Multi-sample anti alising, must be supported by your system 
  */
-int GLBW_CreateWindowWithArgs(const char* title, int width, int height, GLBWenum mode, GLBWenum vsync, GLBWenum resizable, int msaa);
+GLBW_API int GLBW_CreateWindowWithArgs(const char* title, int width, int height, GLBWenum mode, GLBWenum vsync, GLBWenum resizable, int msaa);
 
 /**
  * @brief Clears the window and polls input and system events
  * 
  * @returns GLBW_TRUE or GLBW_FALSE if a close event was triggered
  */
-int GLBW_UpdateWindow(void);
+GLBW_API int GLBW_UpdateWindow(void);
 
 #endif

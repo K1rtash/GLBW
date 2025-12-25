@@ -21,7 +21,7 @@ static glbw_window window = {
     .glfwMon = NULL
 };
 
-int GLBW_CreateWindow(const char* title, int width, int height)
+GLBW_API int GLBW_CreateWindow(const char* title, int width, int height)
 {
     if ( GLBW_CreateWindowWithArgs(title, width, height, GLBW_WINMOD_NORMAL_WINDOWED, GLBW_FALSE, GLBW_FALSE, 0) )
         return GLBW_SUCCESS;
@@ -29,7 +29,7 @@ int GLBW_CreateWindow(const char* title, int width, int height)
 }
 
 
-int GLBW_CreateWindowWithArgs(const char* title, int width, int height, GLBWenum mode, GLBWenum vsync, GLBWenum resizable, int msaa)
+GLBW_API int GLBW_CreateWindowWithArgs(const char* title, int width, int height, GLBWenum mode, GLBWenum vsync, GLBWenum resizable, int msaa)
 {
     if (window.init != GLBW_FALSE) {
         glbw_logError("window already created!");
@@ -113,7 +113,7 @@ void glbw_defaultWin(void)
     window.glfwMon = NULL;
 }
 
-int GLBW_UpdateWindow(void)
+GLBW_API int GLBW_UpdateWindow(void)
 {
     if ( glfwWindowShouldClose(window.glfwWin) ) window.shouldClose = GLBW_TRUE;
 

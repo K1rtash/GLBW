@@ -1,7 +1,7 @@
 #ifndef GLBW_INTERNAL_WINDOW_H
 #define GLBW_INTERNAL_WINDOW_H
 
-#include "GLBW/core/win.h"
+#include "GLBW/Core/win.h"
 
 #include <GLFW/glfw3.h>
 

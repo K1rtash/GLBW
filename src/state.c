@@ -1,5 +1,5 @@
 #include "state.h"
-#include "GLBW/core/def.h"
+#include "GLBW/Core/def.h"
 
 #include <stddef.h>
 

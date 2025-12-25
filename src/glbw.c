@@ -6,7 +6,7 @@
 #include <GLFW/glfw3.h>
 #include <stdio.h>
 
-int GLBW_Init()
+GLBW_API int GLBW_Init()
 {
     if ( glbw_getState()->init != 0 ) {
         glbw_logError("lib is already init!");
@@ -25,7 +25,7 @@ int GLBW_Init()
     return GLBW_SUCCESS;
 }
 
-void GLBW_Exit()
+GLBW_API void GLBW_Exit()
 {
     if( glbw_getState()->init != GLBW_TRUE ) return;
 
@@ -39,7 +39,7 @@ void GLBW_Exit()
     glfwTerminate();
 }
 
-void GLBW_GetError()
+GLBW_API void GLBW_GetError()
 {
     printf("%s\n", glbw_getError());
 }
