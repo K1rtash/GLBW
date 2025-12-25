@@ -12,16 +12,23 @@ option(GLBW_BUILD_DEMO "Build demo binaries" ON)
 file(GLOB SRC_FILES "src/*.c")
 set(GLAD_SRC_FILES "third-party/glad/src/glad.c")
 
-add_library(${PROJECT_NAME} 
+set(CMAKE_C_VISIBILITY_PRESET hidden)
+set(CMAKE_VISIBILITY_INLINES_HIDDEN YES)
+
+add_library(${PROJECT_NAME} SHARED
     ${SRC_FILES} 
     ${GLAD_SRC_FILES}
 )
 
-target_include_directories(${PROJECT_NAME} PUBLIC
-    $<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/include>
-    $<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/third-party/glad/include>
-    $<INSTALL_INTERFACE:include>
+target_include_directories(${PROJECT_NAME} 
+    PUBLIC
+        $<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/include>
+        $<INSTALL_INTERFACE:include>
+    PRIVATE
+        $<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/third-party/glad/include>
 )
+
+target_compile_definitions(${PROJECT_NAME} PRIVATE GLBW_BUILD)
 
 # ----------------------------- 
 # GLFW3
@@ -39,6 +46,7 @@ if(NOT glfw3_FOUND)
     set(GLFW_BUILD_WAYLAND ON CACHE BOOL "" FORCE) 
     set(GLFW_BUILD_X11 OFF CACHE BOOL "" FORCE) 
     set(GLFW_INSTALL OFF CACHE BOOL "" FORCE)
+    set(GLFW_BUILD_SHARED_LIBS OFF CACHE BOOL "" FORCE)
 
     FetchContent_Declare(
         glfw 
@@ -67,25 +75,13 @@ endif()
 # Demo
 # -----------------------------
 if(${GLBW_BUILD_DEMO})
-    file(GLOB DEMO_SRC_FILES "demo/*.c")
-
-    add_executable(${PROJECT_NAME}demo ${DEMO_SRC_FILES})
+    add_executable(${PROJECT_NAME}demo demo/main.c)
 
     target_link_libraries(${PROJECT_NAME}demo PRIVATE ${PROJECT_NAME})
     target_include_directories(${PROJECT_NAME}demo PRIVATE ${PROJECT_SOURCE_DIR}/include)
+
+    install(TARGETS ${PROJECT_NAME}demo DESTINATION bin) 
 endif()
-
-
-# ----------------------------- 
-# Interface
-# -----------------------------
-set_target_properties(${PROJECT_NAME} PROPERTIES
-    INTERFACE_LINK_LIBRARIES ""
-    INTERFACE_LINK_LIBRARIES_DEBUG ""
-    INTERFACE_LINK_LIBRARIES_RELEASE ""
-)
-
-set_property(TARGET ${PROJECT_NAME} PROPERTY EXPORT_LINK_INTERFACE_LIBRARIES OFF)
 
 # -----------------------------
 # Install
