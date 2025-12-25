@@ -14,6 +14,7 @@ set(GLAD_SRC_FILES "third-party/glad/src/glad.c")
 
 set(CMAKE_C_VISIBILITY_PRESET hidden)
 set(CMAKE_VISIBILITY_INLINES_HIDDEN YES)
+add_definitions(-D_WIN32_WINNT=0x0601)
 
 add_library(${PROJECT_NAME} SHARED
     ${SRC_FILES} 

@@ -57,8 +57,10 @@
         "binaryDir": "${sourceDir}/build/macos-universal",
         "cacheVariables": {
             "CMAKE_BUILD_TYPE": "Release",
+            "GLBW_BUILD_DEMO": "ON",
             "CMAKE_OSX_ARCHITECTURES": "x86_64;arm64",
-            "GLBW_BUILD_DEMO": "ON"
+            "CMAKE_OSX_DEPLOYMENT_TARGET": "10.9"
+
         }
     }
   ],
