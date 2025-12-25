@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['index_2emd_0',['index.md',['../index_8md.html',1,'']]]
+  ['library_20basic_20wrapper_0',['GLBW — Graphics Library Basic Wrapper',['../index.html',1,'']]]
 ];

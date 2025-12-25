@@ -95,30 +95,30 @@ $(function(){ initResizable(false); });
 <a href="glbw_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#ifndef GLBW_H</span></div>
 <div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="preprocessor">#define GLBW_H</span></div>
 <div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span> </div>
-<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#include &quot;<a class="code" href="def_8h.html">Core/def.h</a>&quot;</span></div>
-<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="preprocessor">#include &quot;<a class="code" href="win_8h.html">Core/win.h</a>&quot;</span></div>
-<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span> </div>
-<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="preprocessor">#ifdef _WIN32</span></div>
-<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#  ifdef GLBW_BUILD</span></div>
-<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#    define GLBW_API __declspec(dllexport)</span></div>
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="preprocessor">#  else</span></div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="preprocessor">#    define GLBW_API __declspec(dllimport)</span></div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="preprocessor">#  endif</span></div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="preprocessor">#else</span></div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno"><a class="line" href="glbw_8h.html#a440d66aa4cd92bd209f4f9d236128661">   14</a></span><span class="preprocessor">#  define GLBW_API __attribute__((visibility(&quot;default&quot;)))</span></div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="preprocessor">#endif</span></div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span> </div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span> </div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno"><a class="line" href="glbw_8h.html#a4ee19fa0e7729b175762a31e2cacf3a6">   27</a></span><span class="keywordtype">int</span> <a class="code hl_function" href="glbw_8h.html#a4ee19fa0e7729b175762a31e2cacf3a6">GLBW_Init</a>();</div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span> </div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno"><a class="line" href="glbw_8h.html#ac2f432b8b8d6afbff9d5266356c679ea">   34</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="glbw_8h.html#ac2f432b8b8d6afbff9d5266356c679ea">GLBW_Exit</a>();</div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span> </div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno"><a class="line" href="glbw_8h.html#a0ed360446ea6ef65a47bb89e4c225000">   39</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="glbw_8h.html#a0ed360446ea6ef65a47bb89e4c225000">GLBW_GetError</a>();</div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="preprocessor">#include &quot;<a class="code" href="def_8h.html">Core/def.h</a>&quot;</span></div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="preprocessor">#include &quot;<a class="code" href="win_8h.html">Core/win.h</a>&quot;</span></div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span> </div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="preprocessor">#ifdef _WIN32</span></div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="preprocessor">#  ifdef GLBW_BUILD</span></div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="preprocessor">#    define GLBW_API __declspec(dllexport)</span></div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="preprocessor">#  else</span></div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="preprocessor">#    define GLBW_API __declspec(dllimport)</span></div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span><span class="preprocessor">#  endif</span></div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span><span class="preprocessor">#else</span></div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno"><a class="line" href="glbw_8h.html#a440d66aa4cd92bd209f4f9d236128661">   22</a></span><span class="preprocessor">#  define GLBW_API __attribute__((visibility(&quot;default&quot;)))</span></div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span> </div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno"><a class="line" href="glbw_8h.html#aaffb5bc73cbd897c12dd1f98106530f3">   36</a></span><a class="code hl_define" href="glbw_8h.html#a440d66aa4cd92bd209f4f9d236128661">GLBW_API</a> <span class="keywordtype">int</span> <a class="code hl_function" href="glbw_8h.html#aaffb5bc73cbd897c12dd1f98106530f3">GLBW_Init</a>();</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span> </div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno"><a class="line" href="glbw_8h.html#aa3271326e6dd9ae790aa66a1d2291b85">   47</a></span><a class="code hl_define" href="glbw_8h.html#a440d66aa4cd92bd209f4f9d236128661">GLBW_API</a> <span class="keywordtype">void</span> <a class="code hl_function" href="glbw_8h.html#aa3271326e6dd9ae790aa66a1d2291b85">GLBW_Exit</a>();</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span> </div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno"><a class="line" href="glbw_8h.html#acff4b399fa460c73c0ae7a3e9a7fb3f1">   52</a></span><a class="code hl_define" href="glbw_8h.html#a440d66aa4cd92bd209f4f9d236128661">GLBW_API</a> <span class="keywordtype">void</span> <a class="code hl_function" href="glbw_8h.html#acff4b399fa460c73c0ae7a3e9a7fb3f1">GLBW_GetError</a>();</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span><span class="preprocessor">#endif</span></div>
 <div class="ttc" id="adef_8h_html"><div class="ttname"><a href="def_8h.html">def.h</a></div></div>
-<div class="ttc" id="aglbw_8h_html_a0ed360446ea6ef65a47bb89e4c225000"><div class="ttname"><a href="glbw_8h.html#a0ed360446ea6ef65a47bb89e4c225000">GLBW_GetError</a></div><div class="ttdeci">void GLBW_GetError()</div><div class="ttdoc">Prints the latest error to the console.</div></div>
-<div class="ttc" id="aglbw_8h_html_a4ee19fa0e7729b175762a31e2cacf3a6"><div class="ttname"><a href="glbw_8h.html#a4ee19fa0e7729b175762a31e2cacf3a6">GLBW_Init</a></div><div class="ttdeci">int GLBW_Init()</div><div class="ttdoc">Initializes the library.</div></div>
-<div class="ttc" id="aglbw_8h_html_ac2f432b8b8d6afbff9d5266356c679ea"><div class="ttname"><a href="glbw_8h.html#ac2f432b8b8d6afbff9d5266356c679ea">GLBW_Exit</a></div><div class="ttdeci">void GLBW_Exit()</div><div class="ttdoc">Frees all resources created by the library, like the window and textures.</div></div>
+<div class="ttc" id="aglbw_8h_html_a440d66aa4cd92bd209f4f9d236128661"><div class="ttname"><a href="glbw_8h.html#a440d66aa4cd92bd209f4f9d236128661">GLBW_API</a></div><div class="ttdeci">#define GLBW_API</div><div class="ttdef"><b>Definition</b> glbw.h:22</div></div>
+<div class="ttc" id="aglbw_8h_html_aa3271326e6dd9ae790aa66a1d2291b85"><div class="ttname"><a href="glbw_8h.html#aa3271326e6dd9ae790aa66a1d2291b85">GLBW_Exit</a></div><div class="ttdeci">GLBW_API void GLBW_Exit()</div><div class="ttdoc">Frees all resources created by the library, like the window and textures.</div></div>
+<div class="ttc" id="aglbw_8h_html_aaffb5bc73cbd897c12dd1f98106530f3"><div class="ttname"><a href="glbw_8h.html#aaffb5bc73cbd897c12dd1f98106530f3">GLBW_Init</a></div><div class="ttdeci">GLBW_API int GLBW_Init()</div><div class="ttdoc">Initializes the library.</div></div>
+<div class="ttc" id="aglbw_8h_html_acff4b399fa460c73c0ae7a3e9a7fb3f1"><div class="ttname"><a href="glbw_8h.html#acff4b399fa460c73c0ae7a3e9a7fb3f1">GLBW_GetError</a></div><div class="ttdeci">GLBW_API void GLBW_GetError()</div><div class="ttdoc">Prints the latest error to the console.</div></div>
 <div class="ttc" id="awin_8h_html"><div class="ttname"><a href="win_8h.html">win.h</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->

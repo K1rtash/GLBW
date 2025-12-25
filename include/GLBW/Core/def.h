@@ -11,7 +11,6 @@
 #  define GLBW_API __attribute__((visibility("default")))
 #endif
 
-
     typedef int GLBWenum;
 
     #define GLBW_TRUE 1

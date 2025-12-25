@@ -27,9 +27,11 @@
  * 
  * The library must be initialized before GLBW functions are used.
  * 
- * This function will call GLBW_Exit() on failure
+ * This function will call @ref GLBW_Exit() on failure
  * 
- * @returns GLBW_TRUE on success
+ * @returns @ref GLBW_SUCCESS or @ref GLBW_FAIL
+ * 
+ * @see GLBW_Exit() @see GLBW_CreateWindow()
  */
 GLBW_API int GLBW_Init();
 
@@ -37,6 +39,10 @@ GLBW_API int GLBW_Init();
  * @brief Frees all resources created by the library, like the window and textures
  * 
  * Should be called before the program ends to free resources allocated by this library
+ * 
+ * The library must be initialized again with @ref GLBW_Init() before being able to use any functions again
+ * 
+ * @see GLBW_Init()
  */
 GLBW_API void GLBW_Exit();
 
