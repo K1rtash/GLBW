@@ -11,6 +11,14 @@
 #  define GLBW_API __attribute__((visibility("default")))
 #endif
 
+/**
+ * @file def.h
+ * @brief Definitions and enums
+ *
+ * @author David Sánchez
+ * @date 2025
+ */
+
     typedef int GLBWenum;
 
     #define GLBW_TRUE 1

@@ -96,7 +96,7 @@ $(function(){ initResizable(false); });
 </div><!--header-->
 <div class="contents">
 
-<p>Main file including all core GLBW functions.  
+<p>Basic GLFW functions.  
 <a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="def_8h_source.html">Core/def.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="win_8h_source.html">Core/win.h</a>&quot;</code><br />
@@ -110,9 +110,9 @@ Macros</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:aaffb5bc73cbd897c12dd1f98106530f3" id="r_aaffb5bc73cbd897c12dd1f98106530f3"><td class="memItemLeft" align="right" valign="top"><a class="el" href="def_8h.html#a440d66aa4cd92bd209f4f9d236128661">GLBW_API</a> int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aaffb5bc73cbd897c12dd1f98106530f3">GLBW_Init</a> ()</td></tr>
-<tr class="memdesc:aaffb5bc73cbd897c12dd1f98106530f3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializes the library.  <br /></td></tr>
-<tr class="separator:aaffb5bc73cbd897c12dd1f98106530f3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2f528d53dbf7889c901b73882f034fed" id="r_a2f528d53dbf7889c901b73882f034fed"><td class="memItemLeft" align="right" valign="top"><a class="el" href="def_8h.html#a440d66aa4cd92bd209f4f9d236128661">GLBW_API</a> <a class="el" href="def_8h.html#ada3d71bacf0b2a84c7c3e162b068e366">GLBWenum</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2f528d53dbf7889c901b73882f034fed">GLBW_Init</a> ()</td></tr>
+<tr class="memdesc:a2f528d53dbf7889c901b73882f034fed"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializes the library.  <br /></td></tr>
+<tr class="separator:a2f528d53dbf7889c901b73882f034fed"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa3271326e6dd9ae790aa66a1d2291b85" id="r_aa3271326e6dd9ae790aa66a1d2291b85"><td class="memItemLeft" align="right" valign="top"><a class="el" href="def_8h.html#a440d66aa4cd92bd209f4f9d236128661">GLBW_API</a> void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa3271326e6dd9ae790aa66a1d2291b85">GLBW_Exit</a> ()</td></tr>
 <tr class="memdesc:aa3271326e6dd9ae790aa66a1d2291b85"><td class="mdescLeft">&#160;</td><td class="mdescRight">Frees all resources created by the library, like the window and textures.  <br /></td></tr>
 <tr class="separator:aa3271326e6dd9ae790aa66a1d2291b85"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -121,7 +121,7 @@ Functions</h2></td></tr>
 <tr class="separator:acff4b399fa460c73c0ae7a3e9a7fb3f1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Main file including all core GLBW functions. </p>
+<div class="textblock"><p>Basic GLFW functions. </p>
 <dl class="section author"><dt>Author</dt><dd>David Sánchez </dd></dl>
 <dl class="section date"><dt>Date</dt><dd>2025 </dd></dl>
 </div><h2 class="groupheader">Macro Definition Documentation</h2>
@@ -157,8 +157,8 @@ Functions</h2></td></tr>
 
 <p>Frees all resources created by the library, like the window and textures. </p>
 <p>Should be called before the program ends to free resources allocated by this library</p>
-<p>The library must be initialized again with <a class="el" href="#aaffb5bc73cbd897c12dd1f98106530f3">GLBW_Init()</a> before being able to use any functions again</p>
-<dl class="section see"><dt>See also</dt><dd><a class="el" href="#aaffb5bc73cbd897c12dd1f98106530f3" title="Initializes the library.">GLBW_Init()</a> </dd></dl>
+<p>The library must be initialized again with <a class="el" href="#a2f528d53dbf7889c901b73882f034fed">GLBW_Init()</a> before being able to use any functions again</p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="#a2f528d53dbf7889c901b73882f034fed" title="Initializes the library.">GLBW_Init()</a> </dd></dl>
 
 </div>
 </div>
@@ -181,14 +181,14 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="aaffb5bc73cbd897c12dd1f98106530f3" name="aaffb5bc73cbd897c12dd1f98106530f3"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aaffb5bc73cbd897c12dd1f98106530f3">&#9670;&#160;</a></span>GLBW_Init()</h2>
+<a id="a2f528d53dbf7889c901b73882f034fed" name="a2f528d53dbf7889c901b73882f034fed"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2f528d53dbf7889c901b73882f034fed">&#9670;&#160;</a></span>GLBW_Init()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="def_8h.html#a440d66aa4cd92bd209f4f9d236128661">GLBW_API</a> int GLBW_Init </td>
+          <td class="memname"><a class="el" href="def_8h.html#a440d66aa4cd92bd209f4f9d236128661">GLBW_API</a> <a class="el" href="def_8h.html#ada3d71bacf0b2a84c7c3e162b068e366">GLBWenum</a> GLBW_Init </td>
           <td>(</td>
           <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
           <td></td>
@@ -199,10 +199,17 @@ Functions</h2></td></tr>
 <p>Initializes the library. </p>
 <p>The library must be initialized before GLBW functions are used.</p>
 <p>This function will call <a class="el" href="#aa3271326e6dd9ae790aa66a1d2291b85">GLBW_Exit()</a> on failure</p>
-<dl class="section return"><dt>Returns</dt><dd><a class="el" href="def_8h.html#ae2549fd02ecea8c6748ab41fed7c78d3">GLBW_SUCCESS</a> or <a class="el" href="def_8h.html#a8ec2c6b25a9bda75cced9a797fc94f35">GLBW_FAIL</a></dd></dl>
+<dl class="section return"><dt>Returns</dt><dd><a class="el" href="def_8h.html#ada3d71bacf0b2a84c7c3e162b068e366">GLBWenum</a> </dd></dl>
+<dl class="retval"><dt>Return values</dt><dd>
+  <table class="retval">
+    <tr><td class="paramname">GLBW_SUCCESS</td><td>Library initialized </td></tr>
+    <tr><td class="paramname">GLBW_FAIL</td><td>Library failed to initialize</td></tr>
+  </table>
+  </dd>
+</dl>
 <dl class="section see"><dt>See also</dt><dd><a class="el" href="#aa3271326e6dd9ae790aa66a1d2291b85" title="Frees all resources created by the library, like the window and textures.">GLBW_Exit()</a> </dd>
 <dd>
-<a class="el" href="win_8h.html#a9ebfb683a5f7e9786a68f1e245b85255" title="Creates a window.">GLBW_CreateWindow()</a> </dd></dl>
+<a class="el" href="win_8h.html#a76fe611ec275612b29c656d5d58517c8" title="Creates a window.">GLBW_CreateWindow()</a> </dd></dl>
 
 </div>
 </div>

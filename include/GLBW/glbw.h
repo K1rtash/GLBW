@@ -3,7 +3,7 @@
 
 /**
  * @file glbw.h
- * @brief Main file including all core GLBW functions
+ * @brief Basic GLFW functions
  *
  * @author David Sánchez
  * @date 2025
@@ -29,11 +29,13 @@
  * 
  * This function will call @ref GLBW_Exit() on failure
  * 
- * @returns @ref GLBW_SUCCESS or @ref GLBW_FAIL
+ * @returns @ref GLBWenum
+ * @retval GLBW_SUCCESS Library initialized
+ * @retval GLBW_FAIL Library failed to initialize
  * 
  * @see GLBW_Exit() @see GLBW_CreateWindow()
  */
-GLBW_API int GLBW_Init();
+GLBW_API GLBWenum GLBW_Init();
 
 /**
  * @brief Frees all resources created by the library, like the window and textures
