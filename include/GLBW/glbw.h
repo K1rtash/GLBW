@@ -1,6 +1,14 @@
 #ifndef GLBW_H
 #define GLBW_H
 
+/**
+ * @file glbw.h
+ * @brief Main file including all core GLBW functions
+ *
+ * @author David Sánchez
+ * @date 2025
+ */
+
 #include "Core/def.h"
 #include "Core/win.h"
 
@@ -13,7 +21,6 @@
 #else
 #  define GLBW_API __attribute__((visibility("default")))
 #endif
-
 
 /**
  * @brief Initializes the library
